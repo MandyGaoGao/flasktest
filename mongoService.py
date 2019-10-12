@@ -15,12 +15,29 @@ class Mg:
         a=self.con.find().count()
         print(str(a))
     
+    def get_all_books(self):
+        a=self.con.find()
+        ls=[]
+        for i in a:
+            ls.append(i)
+        return ls
+
     def get_all(self):
         a=self.con.distinct("asin")
         ls=[]
         for i in a:
             ls.append(str(i))
         return ls
+    
+    def get_category(self,param):
+        a=self.con.find({"category":param})
+        ls=[]
+        for i in a:
+            ls.append(str(i))
+        return ls
+    
+    def get_sorted_title(self):
+        pass
 #get_all_keys()
 #get_all_info()
 #get_total()
