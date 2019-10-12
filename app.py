@@ -36,7 +36,24 @@ def book_list_page(page_num):
 
 @app.route("/bookinfo/<asin>")
 def show_book(asin):
-    return(str(mongoService.Mg().get_all_info(asin)))
+    book_info=mongoService.Mg().get_all_info(asin)
+    return(render_template("info.html",book_info=book_info))
+@app.route("/dashboard")
+def dashboard():
+    return(render_template("dashboard.html"))
+@app.route("/login")
+def login():
+    return(render_template("login.html"))
+
+@app.route("/registration")
+def registration():
+    return(render_template("registration.html"))
+@app.route("/search")
+def search():
+    return(render_template("search.html"))
+
+
+
 if __name__=="__main__":
     app.run(debug=True)
 
