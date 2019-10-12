@@ -20,7 +20,7 @@ class Mg:
         ls=[]
         for i in a:
             ls.append(str(i))
-        return ls[:20]
+        return ls
 #get_all_keys()
 #get_all_info()
 #get_total()

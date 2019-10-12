@@ -22,7 +22,18 @@ def des_sql():
 @app.route("/bookinfo")
 def book_list():
     return(str(mongoService.Mg().get_all()))
-        
+@app.route("/bookindex/<page_num>")
+def book_list_page(page_num):
+    page_num=int(page_num)
+    ls=mongoService.Mg().get_all()
+    total=len(ls)//20
+    if page_num==total:
+        return(str(ls[page_num*20:]))
+    elif page_num>total:
+        return("no more books!")
+    else:
+        return(str(ls[page_num*20:(page_num+1)*20])) 
+
 @app.route("/bookinfo/<asin>")
 def show_book(asin):
     return(str(mongoService.Mg().get_all_info(asin)))
